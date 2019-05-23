@@ -104,10 +104,10 @@
 
 <script>
 export default {
-  name: "App",
-  data: () => ({
-    drawer: false
-  })
+    name: "App",
+    data: () => ({
+        drawer: false
+    })
 };
 </script>
 
