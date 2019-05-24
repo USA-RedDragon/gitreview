@@ -57,8 +57,12 @@ Note: Client environment variables must be set at build time
 
 | Environment Variable | Details                                                                |  Example |
 |----------------------|------------------------------------------------------------------------|----------|
-| BASE_URL             | The base URL for the frontend.                                         | /        |
+| BASE_URL             | The base URL for the frontend                                          | /        |
 
 ### Gitserver
 
-None
+| Environment Variable | Details                                                                |  Example   |
+|----------------------|------------------------------------------------------------------------|------------|
+| REPO_PATH            | The path to keep git repos in                                          | /app/repos |
+| AUTO_CREATE_REPOS    | Whether to create repos if they don't exist                            | true       |
+| PORT                 | The port to listen to git on                                           | 29418      |
