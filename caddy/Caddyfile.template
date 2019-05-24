@@ -1,0 +1,12 @@
+${URL}
+tls ${TLS_OPTIONS}
+gzip
+${BASIC_AUTH_OPTIONS}
+
+proxy / ${CLIENT_HOST}:${CLIENT_PORT} {
+  transparent
+}
+
+proxy /api ${API_HOST}:${API_PORT} {
+  transparent
+}
