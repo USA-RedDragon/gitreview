@@ -12,3 +12,53 @@ services:
       - ./database:/var/lib/mysql
     ports:
       - 3306:3306
+
+  client:
+    image: node:10.15-alpine
+    working_dir: /app
+    environment:
+      BASE_URL: "/"
+      API_URL: "https://4bddd2f0.ngrok.io"
+      PORT: "3001"
+    command: npm run start
+    ports:
+      - 3001:3001
+    volumes:
+      - ./client:/app
+
+  api:
+    image: node:10.15-alpine
+    working_dir: /app
+    environment:
+      DB_HOST: "mariadb"
+      GITHUB_CLIENT_ID: "e784805167d98101e139"
+      GITHUB_CLIENT_SECRET: "9f626c1a443864ccc0f8397a933ca1f7edae870c"
+      HOST: "https://4bddd2f0.ngrok.io"
+      GITHUB_CALLBACK_URL: "https://4bddd2f0.ngrok.io/api/v1/auth/github/callback"
+    command: npm run start
+    ports:
+      - 3000:3000
+    volumes:
+      - ./api:/app
+
+  gitserver:
+    image: node:10.15-alpine
+    working_dir: /app
+    command: npm run start
+    ports:
+      - 29418:29418
+    volumes:
+      - ./gitserver:/app
+
+  caddy:
+    build: caddy/
+    environment:
+      URL: "0.0.0.0:80"
+      TLS_OPTIONS: "off"
+      BASIC_AUTH_OPTIONS: ""
+      CLIENT_HOST: "client"
+      CLIENT_PORT: "3001"
+      API_HOST: "api"
+      API_PORT: "3000"
+    ports:
+      - 80:80
