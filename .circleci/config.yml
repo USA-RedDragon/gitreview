@@ -90,6 +90,9 @@ jobs:
           fingerprints:
             - "9b:96:d8:66:2b:5f:a3:15:c5:cb:e5:24:0f:4f:bc:25"
       - run:
+          name: Add known_hosts
+          command: echo "$SSH_HOSTNAME,$SSH_IP $SSH_SCHEME $SSH_SERVER_KEY" >> ~/.ssh/known_hosts
+      - run:
           name: SSH Test
           command: ssh $SSH_USERNAME@$SSH_HOSTNAME ls
 
