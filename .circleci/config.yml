@@ -1,6 +1,6 @@
 version: 2
 jobs:
-  deploy-api:
+  build-api:
     docker:
       - image: circleci/node:10.15
 
@@ -22,7 +22,7 @@ jobs:
           name: Push
           command: docker push jamcswain/gitreview-api
 
-  deploy-caddy:
+  build-caddy:
     docker:
       - image: circleci/node:10.15
 
@@ -41,7 +41,7 @@ jobs:
           name: Push
           command: docker push jamcswain/gitreview-caddy
 
-  deploy-client:
+  build-client:
     docker:
       - image: circleci/node:10.15
 
@@ -60,7 +60,7 @@ jobs:
           name: Push
           command: docker push jamcswain/gitreview-client
 
-  deploy-gitserver:
+  build-gitserver:
     docker:
       - image: circleci/node:10.15
 
@@ -79,26 +79,44 @@ jobs:
           name: Push
           command: docker push jamcswain/gitreview-gitserver
 
+  deploy:
+    docker:
+      - image: alpine
+    steps:
+      - add_ssh_keys:
+        fingerprints:
+          - "9b:96:d8:66:2b:5f:a3:15:c5:cb:e5:24:0f:4f:bc:25"
+
 workflows:
   version: 2
   workflow:
     jobs:
-      - deploy-api:
+      - build-api:
           filters:
             branches:
               only:
                 - master
-      - deploy-caddy:
+      - build-caddy:
           filters:
             branches:
               only:
                 - master
-      - deploy-client:
+      - build-client:
           filters:
             branches:
               only:
                 - master
-      - deploy-gitserver:
+      - build-gitserver:
+          filters:
+            branches:
+              only:
+                - master
+      - deploy:
+          requires:
+            - build-api
+            - build-caddy
+            - build-client
+            - build-gitserver
           filters:
             branches:
               only:
