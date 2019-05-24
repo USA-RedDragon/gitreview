@@ -85,7 +85,7 @@ jobs:
     steps:
       - run:
           name: Install SSH
-          command: apk add --no-cache ssh
+          command: apk add --no-cache openssh
       - add_ssh_keys:
           fingerprints:
             - "9b:96:d8:66:2b:5f:a3:15:c5:cb:e5:24:0f:4f:bc:25"
