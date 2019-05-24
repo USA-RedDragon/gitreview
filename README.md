@@ -55,9 +55,9 @@
 
 Note: Client environment variables must be set at build time
 
-| Environment Variable | Details                                                                |  Example |
-|----------------------|------------------------------------------------------------------------|----------|
-| BASE_URL             | The base URL for the frontend                                          | /        |
+| Environment Variable | Details                       | Example |
+|----------------------|-------------------------------|---------|
+| BASE_URL             | The base URL for the frontend | /       |
 
 ### Gitserver
 
@@ -66,3 +66,25 @@ Note: Client environment variables must be set at build time
 | REPO_PATH            | The path to keep git repos in                                          | /app/repos |
 | AUTO_CREATE_REPOS    | Whether to create repos if they don't exist                            | true       |
 | PORT                 | The port to listen to git on                                           | 29418      |
+
+## Volumes
+
+### API
+
+None
+
+### Caddy
+
+| Path         | Details                               |
+|--------------|---------------------------------------|
+| /root/.caddy | The persistent SSL certificate volume |
+
+### Client
+
+None
+
+### Gitserver
+
+| Path       | Details                        |
+|------------|--------------------------------|
+| /app/repos | The persistent git repo volume |
