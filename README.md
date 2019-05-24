@@ -2,6 +2,20 @@
 
 [![CircleCI](https://circleci.com/gh/USA-RedDragon/gitreview.svg?style=svg)](https://circleci.com/gh/USA-RedDragon/gitreview)
 
+## Running Locally
+
+The `docker-compose.yml` file is setup for local development
+
+I recommend [ngrok](https://ngrok.com/) to tunnel locally for GitHub OAuth.
+
+## Deploying
+
+The Docker images for the current master branch are found on [Docker Hub](https://hub.docker.com/u/jamcswain) under `gitreview-{name}`. Versioning will be implemented once we reach stable 1.0.
+
+The below documentation will go through the information you need.
+
+As far as best practices, and how to deploy containers, a Google search is your best friend.
+
 ## Docker Images
 
 ### API
@@ -88,3 +102,11 @@ None
 | Path       | Details                        |
 |------------|--------------------------------|
 | /app/repos | The persistent git repo volume |
+
+## Database
+
+Any database system compatible with Sequelize will work with this
+
+See <http://docs.sequelizejs.com/manual/dialects.html> for a list
+
+Make sure to persist this and take backups
