@@ -1,5 +1,5 @@
 <template>
-  <v-app dark>
+  <v-app :dark="dark">
     <v-toolbar>
       <v-toolbar-side-icon @click="drawer = !drawer"/>
       <v-toolbar-title>Title</v-toolbar-title>
@@ -12,44 +12,98 @@
         class="hidden-sm-and-down"
       />
       <v-spacer/>
-      <v-badge left>
-        <template v-slot:badge>
-          <span>17</span>
+      <v-menu bottom right nudge-bottom="32">
+        <template v-slot:activator="{ on }">
+          <v-badge left v-ripple>
+            <template v-slot:badge>
+              <span>{{notficationCount}}</span>
+            </template>
+            <v-btn icon v-on="on" class="notification-button">
+              <v-icon large>notifications</v-icon>
+            </v-btn>
+          </v-badge>
         </template>
-        <v-icon large>notifications</v-icon>
-      </v-badge>
+
+        <v-list>
+          <v-list-tile
+            v-for="(notfication, i) in notfications"
+            :key="i"
+            :avatar="!!notfication.avatar"
+            :to="notfication.action"
+          >
+            <v-list-tile-avatar v-if="!!notfication.avatar">
+              <img :src="notfication.avatar">
+            </v-list-tile-avatar>
+            <v-list-tile-content>
+              <v-list-tile-title>{{ notfication.title }}</v-list-tile-title>
+              <v-list-tile-sub-title v-html="notfication.text"></v-list-tile-sub-title>
+            </v-list-tile-content>
+          </v-list-tile>
+        </v-list>
+      </v-menu>
+
+      <v-menu bottom left nudge-bottom="32">
+        <template v-slot:activator="{ on }">
+          <v-list-tile v-ripple v-on="on" :avatar="loggedIn" :href="loggedIn ? '':'/api/v1/auth/github'">
+            <v-list-tile-avatar v-if="loggedIn">
+              <img :src="user.avatarUrl">
+            </v-list-tile-avatar>
+
+            <v-list-tile-content>
+              <v-list-tile-title v-if="!loggedIn">Log In</v-list-tile-title>
+              <v-list-tile-title v-if="loggedIn">{{user.name}}<v-icon>arrow_drop_down</v-icon></v-list-tile-title>
+            </v-list-tile-content>
+          </v-list-tile>
+        </template>
+        <v-list v-if="loggedIn">
+          <v-list-tile to="/settings">
+            <v-list-tile-content>
+              <v-list-tile-title>Settings</v-list-tile-title>
+            </v-list-tile-content>
+          </v-list-tile>
+          <v-list-tile href="/api/v1/auth/logout">
+            <v-list-tile-content>
+              <v-list-tile-title>Log Out</v-list-tile-title>
+            </v-list-tile-content>
+          </v-list-tile>
+        </v-list>
+      </v-menu>
     </v-toolbar>
     <v-navigation-drawer v-model="drawer" absolute temporary>
       <v-list>
         <v-list-tile avatar>
           <v-list-tile-avatar>
-            <img
-              src="https://secure.gravatar.com/avatar/EC121FF80513AE58ED478D5C5787075B.jpg?s=300&d=identicon"
-            >
+            <img :src="user.avatarUrl">
           </v-list-tile-avatar>
 
           <v-list-tile-content>
-            <v-list-tile-title>Jacob McSwain</v-list-tile-title>
+            <v-list-tile-title>{{user.name}}</v-list-tile-title>
           </v-list-tile-content>
         </v-list-tile>
         <v-divider/>
         <v-list-tile>
-          <v-text-field flat hide-details prepend-inner-icon="search" label="Search" class="hidden-md-and-up" />
+          <v-text-field
+            flat
+            hide-details
+            prepend-inner-icon="search"
+            label="Search"
+            class="hidden-md-and-up"
+          />
         </v-list-tile>
         <v-subheader>Changes</v-subheader>
-        <v-list-tile>
+        <v-list-tile to="/">
           <v-list-tile-action>
             <v-icon>priority_high</v-icon>
           </v-list-tile-action>
           <v-list-tile-title>Open</v-list-tile-title>
         </v-list-tile>
-        <v-list-tile>
+        <v-list-tile to="/changes/merged">
           <v-list-tile-action>
             <v-icon>check</v-icon>
           </v-list-tile-action>
           <v-list-tile-title>Merged</v-list-tile-title>
         </v-list-tile>
-        <v-list-tile>
+        <v-list-tile to="/changes/abandoned">
           <v-list-tile-action>
             <v-icon>clear</v-icon>
           </v-list-tile-action>
@@ -57,13 +111,13 @@
         </v-list-tile>
         <v-divider/>
         <v-subheader>Projects</v-subheader>
-        <v-list-tile>
+        <v-list-tile to="/projects/list">
           <v-list-tile-action>
             <v-icon>list</v-icon>
           </v-list-tile-action>
           <v-list-tile-title>List</v-list-tile-title>
         </v-list-tile>
-        <v-list-tile>
+        <v-list-tile to="/projects/create">
           <v-list-tile-action>
             <v-icon>add</v-icon>
           </v-list-tile-action>
@@ -71,13 +125,13 @@
         </v-list-tile>
         <v-divider/>
         <v-subheader>People</v-subheader>
-        <v-list-tile>
+        <v-list-tile to="/people/users">
           <v-list-tile-action>
             <v-icon>person</v-icon>
           </v-list-tile-action>
           <v-list-tile-title>Users</v-list-tile-title>
         </v-list-tile>
-        <v-list-tile>
+        <v-list-tile to="/people/groups">
           <v-list-tile-action>
             <v-icon>people</v-icon>
           </v-list-tile-action>
@@ -85,11 +139,19 @@
         </v-list-tile>
         <v-divider/>
         <v-subheader>Plugins</v-subheader>
-        <v-list-tile>
+        <v-list-tile to="/plugins/installed">
           <v-list-tile-action>
             <v-icon>extension</v-icon>
           </v-list-tile-action>
           <v-list-tile-title>Installed</v-list-tile-title>
+        </v-list-tile>
+        <v-divider/>
+        <v-subheader>Settings</v-subheader>
+        <v-list-tile>
+          <v-list-tile-action>
+            <v-icon>invert_colors</v-icon>
+          </v-list-tile-action>
+          <v-switch v-model="dark" :label="dark ? 'Dark':'Light'"/>
         </v-list-tile>
       </v-list>
     </v-navigation-drawer>
@@ -103,11 +165,50 @@
 </template>
 
 <script>
+import axios from "axios";
+
 export default {
     name: "App",
-    data: () => ({
-        drawer: false
-    })
+    data() {
+        return {
+            drawer: false,
+            loggedIn: false,
+            dark: false,
+            user: {},
+            notficationCount: 0,
+            notfications: [
+                {
+                    title: "Jacob McSwain requires your review",
+                    text: "Add toggle for face auto unlock (2/2)",
+                    avatar: "https://avatars0.githubusercontent.com/u/13051767?v=4",
+                    action: "/"
+                },
+                {
+                    title: "Jacob McSwain requires your review",
+                    text: "libcameraservice: force specific cam id for google face unlock",
+                    avatar: "https://avatars0.githubusercontent.com/u/13051767?v=4",
+                    action: "/"
+                },
+                {
+                    title: "Jacob McSwain requires your review",
+                    text: "KeyguardHostView: Auto face unlock v2",
+                    avatar: "https://avatars0.githubusercontent.com/u/13051767?v=4",
+                    action: "/"
+                }
+            ]
+        };
+    },
+    created() {
+        axios
+            .get("/api/v1/users/me")
+            .then((res) => {
+                this.loggedIn = true;
+                this.user = res.data;
+            })
+            .catch((_err) => {
+                this.loggedIn = false;
+            });
+    }
 };
 </script>
 
@@ -118,5 +219,10 @@ export default {
 
 .lowercase {
   text-transform: none;
+}
+
+.notification-button {
+  margin: 0 !important;
+  padding: 2px !important;
 }
 </style>

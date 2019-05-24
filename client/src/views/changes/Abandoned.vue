@@ -1,7 +1,7 @@
 <template>
   <div class="home">
-    <p class="display-1">Open Commits</p>
-    <v-data-table :headers="headers" :items="users" class="elevation-1">
+    <p class="display-1">Abandoned Commits</p>
+    <v-data-table :headers="headers" :items="changes" class="elevation-1">
       <template v-slot:items="props">
         <td>{{ props.item.subject }}</td>
         <td>{{ props.item.status }}</td>
@@ -23,7 +23,7 @@
 
 <script>
 export default {
-    name: "Home",
+    name: "Abandoned",
     data: () => ({
         headers: [
             { text: "Subject", value: "subject", sortable: true },
@@ -37,39 +37,39 @@ export default {
             { text: "Review", value: "review", sortable: true },
             { text: "Verified", value: "verified", sortable: true }
         ],
-        users: [
+        changes: [
             {
-                subject: "Add toggle for face auto unlock (2/2)",
-                status: "",
+                subject: "Ambient Play: Add summary to some settings",
+                status: "Abandoned",
                 owner: "Dillon Brosche",
                 project: "packages_apps_Settings",
                 branch: "inv-9.0",
-                updated: "Feb 24",
+                updated: "Feb 3",
                 size: "",
                 review: "+1",
                 verified: true
             },
             {
-                subject: "libcameraservice: force specific cam id for google face unlock",
-                status: "Merge Conflict",
-                owner: "Dillon Brosche",
-                project: "frameworks_av",
-                branch: "inv-9.0",
-                updated: "Feb 24",
-                size: "",
-                review: "+2",
-                verified: ""
-            },
-            {
-                subject: "KeyguardHostView: Auto face unlock v2",
-                status: "",
+                subject: "Give setupwizard REQUEST_NETWORK_SCORES",
+                status: "Abandoned",
                 owner: "Dillon Brosche",
                 project: "frameworks_base",
                 branch: "inv-9.0",
-                updated: "Feb 24",
+                updated: "Jan 13",
                 size: "",
-                review: "-1",
-                verified: ""
+                review: "-3",
+                verified: true
+            },
+            {
+                subject: "SmartBar: Update Battery Bar compatibility",
+                status: "Abandoned",
+                owner: "DJ Calphonic",
+                project: "packages_apps_SmartNav",
+                branch: "inv-9.0",
+                updated: "Jan 14",
+                size: "",
+                review: "0",
+                verified: false
             }
         ]
     })

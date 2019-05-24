@@ -1,7 +1,7 @@
 <template>
   <div class="home">
-    <p class="display-1">Open Commits</p>
-    <v-data-table :headers="headers" :items="users" class="elevation-1">
+    <p class="display-1">Merged Commits</p>
+    <v-data-table :headers="headers" :items="changes" class="elevation-1">
       <template v-slot:items="props">
         <td>{{ props.item.subject }}</td>
         <td>{{ props.item.status }}</td>
@@ -23,7 +23,7 @@
 
 <script>
 export default {
-    name: "Home",
+    name: "Merged",
     data: () => ({
         headers: [
             { text: "Subject", value: "subject", sortable: true },
@@ -37,39 +37,40 @@ export default {
             { text: "Review", value: "review", sortable: true },
             { text: "Verified", value: "verified", sortable: true }
         ],
-        users: [
+        changes: [
             {
-                subject: "Add toggle for face auto unlock (2/2)",
-                status: "",
+                subject: "Left volume panel: Fix animation",
+                status: "Merged",
                 owner: "Dillon Brosche",
-                project: "packages_apps_Settings",
-                branch: "inv-9.0",
-                updated: "Feb 24",
+                project: "frameworks_base",
+                branch: "inv-9.0 (vol-pos)",
+                topic: "vol-pos",
+                updated: "Jan 14",
                 size: "",
-                review: "+1",
+                review: "+2",
                 verified: true
             },
             {
-                subject: "libcameraservice: force specific cam id for google face unlock",
-                status: "Merge Conflict",
-                owner: "Dillon Brosche",
-                project: "frameworks_av",
-                branch: "inv-9.0",
-                updated: "Feb 24",
-                size: "",
-                review: "+2",
-                verified: ""
-            },
-            {
-                subject: "KeyguardHostView: Auto face unlock v2",
-                status: "",
+                subject: "Volume panel location: load the bool once",
+                status: "Merged",
                 owner: "Dillon Brosche",
                 project: "frameworks_base",
                 branch: "inv-9.0",
-                updated: "Feb 24",
+                updated: "Jan 14",
                 size: "",
-                review: "-1",
-                verified: ""
+                review: "+2",
+                verified: true
+            },
+            {
+                subject: "SystemUI: allow devices override audio panel location",
+                status: "Merged",
+                owner: "Dillon Brosche",
+                project: "frameworks_base",
+                branch: "inv-9.0",
+                updated: "Jan 14",
+                size: "",
+                review: "+3",
+                verified: false
             }
         ]
     })

@@ -13,7 +13,8 @@
     "url": "git://github.com/USA-RedDragon/gitreview.git"
   },
   "scripts": {
-    "serve": "vue-cli-service serve",
+    "start": "npm run start:dev",
+    "start:dev": "vue-cli-service serve",
     "build": "vue-cli-service build",
     "lint": "eslint src/**/*.js src/**/*.vue",
     "lint:fix": "npm run lint -- --fix",
@@ -21,6 +22,7 @@
     "test:unit": "vue-cli-service test:unit"
   },
   "dependencies": {
+    "axios": "^0.18.0",
     "vue": "^2.6.10",
     "vue-router": "^3.0.3",
     "vuetify": "^1.5.5"
