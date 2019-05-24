@@ -1,5 +1,7 @@
 # Git Review
 
+[![CircleCI](https://circleci.com/gh/USA-RedDragon/gitreview.svg?style=svg)](https://circleci.com/gh/USA-RedDragon/gitreview)
+
 ## Docker Images
 
 ### API
