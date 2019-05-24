@@ -10,17 +10,17 @@ jobs:
       - checkout
       - setup_remote_docker
       - run:
-        name: Install Dependencies
-        command: cd api && npm ci
+          name: Install Dependencies
+          command: cd api && npm ci
       - run:
-        name: Build
-        command: docker build -t jamcswain/gitreview-api api/
+          name: Build
+          command: docker build -t jamcswain/gitreview-api api/
       - run:
-        name: Login to Docker Hub
-        command: echo "$DOCKERHUB_PASS" | docker login -u "$DOCKERHUB_USERNAME" --password-stdin
+          name: Login to Docker Hub
+          command: echo "$DOCKERHUB_PASS" | docker login -u "$DOCKERHUB_USERNAME" --password-stdin
       - run:
-        name: Push
-        command: docker push jamcswain/gitreview-api
+          name: Push
+          command: docker push jamcswain/gitreview-api
 
   deploy-caddy:
     docker:
@@ -32,14 +32,14 @@ jobs:
       - checkout
       - setup_remote_docker
       - run:
-        name: Build
-        command: docker build -t jamcswain/gitreview-caddy caddy/
+          name: Build
+          command: docker build -t jamcswain/gitreview-caddy caddy/
       - run:
-        name: Login to Docker Hub
-        command: echo "$DOCKERHUB_PASS" | docker login -u "$DOCKERHUB_USERNAME" --password-stdin
+          name: Login to Docker Hub
+          command: echo "$DOCKERHUB_PASS" | docker login -u "$DOCKERHUB_USERNAME" --password-stdin
       - run:
-        name: Push
-        command: docker push jamcswain/gitreview-caddy
+          name: Push
+          command: docker push jamcswain/gitreview-caddy
 
   deploy-client:
     docker:
@@ -51,14 +51,14 @@ jobs:
       - checkout
       - setup_remote_docker
       - run:
-        name: Build
-        command: docker build -t jamcswain/gitreview-client client/
+          name: Build
+          command: docker build -t jamcswain/gitreview-client client/
       - run:
-        name: Login to Docker Hub
-        command: echo "$DOCKERHUB_PASS" | docker login -u "$DOCKERHUB_USERNAME" --password-stdin
+          name: Login to Docker Hub
+          command: echo "$DOCKERHUB_PASS" | docker login -u "$DOCKERHUB_USERNAME" --password-stdin
       - run:
-        name: Push
-        command: docker push jamcswain/gitreview-client
+          name: Push
+          command: docker push jamcswain/gitreview-client
 
   deploy-gitserver:
     docker:
@@ -70,14 +70,14 @@ jobs:
       - checkout
       - setup_remote_docker
       - run:
-        name: Build
-        command: docker build -t jamcswain/gitreview-gitserver gitserver/
+          name: Build
+          command: docker build -t jamcswain/gitreview-gitserver gitserver/
       - run:
-        name: Login to Docker Hub
-        command: echo "$DOCKERHUB_PASS" | docker login -u "$DOCKERHUB_USERNAME" --password-stdin
+          name: Login to Docker Hub
+          command: echo "$DOCKERHUB_PASS" | docker login -u "$DOCKERHUB_USERNAME" --password-stdin
       - run:
-        name: Push
-        command: docker push jamcswain/gitreview-gitserver
+          name: Push
+          command: docker push jamcswain/gitreview-gitserver
 
 workflows:
   version: 2
