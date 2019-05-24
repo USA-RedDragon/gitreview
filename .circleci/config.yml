@@ -1,0 +1,105 @@
+version: 2
+jobs:
+  deploy-api:
+    docker:
+      - image: circleci/node:10.15
+
+    working_directory: ~/repo
+
+    steps:
+      - checkout
+      - setup_remote_docker
+      - run:
+        name: Install Dependencies
+        command: cd api && npm ci
+      - run:
+        name: Build
+        command: docker build -t jamcswain/gitreview-api api/
+      - run:
+        name: Login to Docker Hub
+        command: echo "$DOCKERHUB_PASS" | docker login -u "$DOCKERHUB_USERNAME" --password-stdin
+      - run:
+        name: Push
+        command: docker push jamcswain/gitreview-api
+
+  deploy-caddy:
+    docker:
+      - image: circleci/node:10.15
+
+    working_directory: ~/repo
+
+    steps:
+      - checkout
+      - setup_remote_docker
+      - run:
+        name: Build
+        command: docker build -t jamcswain/gitreview-caddy caddy/
+      - run:
+        name: Login to Docker Hub
+        command: echo "$DOCKERHUB_PASS" | docker login -u "$DOCKERHUB_USERNAME" --password-stdin
+      - run:
+        name: Push
+        command: docker push jamcswain/gitreview-caddy
+
+  deploy-client:
+    docker:
+      - image: circleci/node:10.15
+
+    working_directory: ~/repo
+
+    steps:
+      - checkout
+      - setup_remote_docker
+      - run:
+        name: Build
+        command: docker build -t jamcswain/gitreview-client client/
+      - run:
+        name: Login to Docker Hub
+        command: echo "$DOCKERHUB_PASS" | docker login -u "$DOCKERHUB_USERNAME" --password-stdin
+      - run:
+        name: Push
+        command: docker push jamcswain/gitreview-client
+
+  deploy-gitserver:
+    docker:
+      - image: circleci/node:10.15
+
+    working_directory: ~/repo
+
+    steps:
+      - checkout
+      - setup_remote_docker
+      - run:
+        name: Build
+        command: docker build -t jamcswain/gitreview-gitserver gitserver/
+      - run:
+        name: Login to Docker Hub
+        command: echo "$DOCKERHUB_PASS" | docker login -u "$DOCKERHUB_USERNAME" --password-stdin
+      - run:
+        name: Push
+        command: docker push jamcswain/gitreview-gitserver
+
+workflows:
+  version: 2
+  workflow:
+    jobs:
+      - deploy-api:
+          filters:
+            branches:
+              only:
+                - master
+      - deploy-caddy:
+          filters:
+            branches:
+              only:
+                - master
+      - deploy-client:
+          filters:
+            branches:
+              only:
+                - master
+      - deploy-gitserver:
+          filters:
+            branches:
+              only:
+                - master
