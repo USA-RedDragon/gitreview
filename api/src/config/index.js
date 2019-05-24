@@ -4,7 +4,7 @@ module.exports = {
         username: process.env.DB_USERNAME || 'username',
         password: process.env.DB_PASSWORD || 'password',
         database: process.env.DB_DATABASE || 'database',
-        dialect: process.env.DB_DIALECT || 'mysql',
+        dialect: process.env.DB_DIALECT || 'mariadb',
     },
     http: {
         port: process.env.PORT || 3000,
