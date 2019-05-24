@@ -2,6 +2,8 @@ FROM node:10.15-alpine as builder
 
 WORKDIR /app
 
+ENV BASE_URL=/
+
 COPY package.json package-lock.json ./
 
 RUN npm ci

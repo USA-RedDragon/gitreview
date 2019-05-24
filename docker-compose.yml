@@ -17,8 +17,6 @@ services:
     image: node:10.15-alpine
     working_dir: /app
     environment:
-      BASE_URL: "/"
-      API_URL: "https://4bddd2f0.ngrok.io"
       PORT: "3001"
     command: npm run start
     ports:
