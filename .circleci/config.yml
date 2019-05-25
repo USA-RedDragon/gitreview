@@ -33,7 +33,7 @@ jobs:
       - setup_remote_docker
       - run:
           name: Install CodeCov
-          command: npm install -g codecov
+          command: sudo npm install -g codecov
       - run:
           name: Install Dependencies
           command: cd api && npm ci
