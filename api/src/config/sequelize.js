@@ -6,6 +6,9 @@ module.exports = {
     password: config.db.password,
     host: config.db.host,
     dialect: config.db.dialect,
+    dialectOptions: {
+        timezone: 'local',
+    },
     pool: {
         max: 10,
         min: 1,
