@@ -36,6 +36,8 @@ services:
     command: npm run start
     ports:
       - 3000:3000
+    depends_on:
+      - mariadb
     volumes:
       - ./api:/app
 
@@ -47,6 +49,8 @@ services:
     command: sh -c "apk add --no-cache git && npm run start"
     ports:
       - 29418:29418
+    depends_on:
+      - mariadb
     volumes:
       - ./gitserver:/app
 
