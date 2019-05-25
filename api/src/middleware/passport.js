@@ -27,13 +27,21 @@ module.exports = (app) => {
         clientID: githubConfig.clientId,
         clientSecret: githubConfig.clientSecret,
         callbackURL: githubConfig.callbackUrl,
+        scope: ['user:email'],
     },
     (accessToken, refreshToken, profile, cb) => {
+        let primaryEmail = undefined;
+        profile.emails.forEach((email) => {
+            if (email.primary) {
+                primaryEmail = email.value;
+                return;
+            }
+        });
         models.users.findOrCreate({
             where: { githubId: profile.id },
             defaults: {
                 admin: false,
-                email: profile._json.email,
+                email: primaryEmail,
                 login: profile._json.login,
                 name: profile._json.name,
                 avatarUrl: profile._json.avatar_url,
