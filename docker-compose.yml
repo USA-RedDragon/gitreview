@@ -42,7 +42,7 @@ services:
   gitserver:
     image: node:10.15-alpine
     working_dir: /app
-    command: npm run start
+    command: apk add --no-cache git && npm run start
     ports:
       - 29418:29418
     volumes:
