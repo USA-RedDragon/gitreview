@@ -44,7 +44,7 @@ services:
     working_dir: /app
     environment:
       DB_HOST: "mariadb"
-    command: apk add --no-cache git && npm run start
+    command: sh -c "apk add --no-cache git && npm run start"
     ports:
       - 29418:29418
     volumes:
