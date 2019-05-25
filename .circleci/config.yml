@@ -22,6 +22,28 @@ jobs:
           name: Push
           command: docker push jamcswain/gitreview-api
 
+  test-api:
+    docker:
+      - image: circleci/node:10.15
+
+    working_directory: ~/repo
+
+    steps:
+      - checkout
+      - setup_remote_docker
+      - run:
+          name: Install CodeCov
+          command: npm install -g codecov
+      - run:
+          name: Install Dependencies
+          command: cd api && npm ci
+      - run:
+          name: Test
+          command: cd api && npm run test || true
+      - run:
+          name: Upload Coverage
+          command: cd api && npm run coverage
+
   build-caddy:
     docker:
       - image: circleci/node:10.15
@@ -106,7 +128,14 @@ workflows:
   version: 2
   workflow:
     jobs:
+      - test-api:
+          filters:
+            branches:
+              only:
+                - master
       - build-api:
+          requires:
+            - test-api
           filters:
             branches:
               only:

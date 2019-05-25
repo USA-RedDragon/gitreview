@@ -1,6 +1,6 @@
 # Git Review
 
-[![CircleCI](https://circleci.com/gh/USA-RedDragon/gitreview.svg?style=svg)](https://circleci.com/gh/USA-RedDragon/gitreview)
+[![CircleCI](https://circleci.com/gh/USA-RedDragon/gitreview.svg?style=svg)](https://circleci.com/gh/USA-RedDragon/gitreview) [![codecov](https://codecov.io/gh/USA-RedDragon/gitreview/branch/master/graph/badge.svg)](https://codecov.io/gh/USA-RedDragon/gitreview)
 
 ## Running Locally
 

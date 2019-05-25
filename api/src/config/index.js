@@ -12,8 +12,8 @@ module.exports = {
     },
     auth: {
         github: {
-            clientId: process.env.GITHUB_CLIENT_ID,
-            clientSecret: process.env.GITHUB_CLIENT_SECRET,
+            clientId: process.env.GITHUB_CLIENT_ID || '0000',
+            clientSecret: process.env.GITHUB_CLIENT_SECRET || '0000',
             callbackUrl:
                 process.env.GITHUB_CALLBACK_URL ||
                 (process.env.HOST || 'http://localhost:' + (process.env.PORT || 3000)

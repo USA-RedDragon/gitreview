@@ -3,3 +3,5 @@ node_modules/
 server/git
 repos/
 database/
+.nyc_output/
+coverage.lcov
