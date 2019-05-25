@@ -38,8 +38,8 @@ As far as best practices, and how to deploy containers, a Google search is your 
 
 ### API
 
-| Environment Variable | Details                                     |  Example                                          |
-|----------------------|---------------------------------------------|---------------------------------------------------|
+| Environment Variable |                   Details                   |                      Example                      |
+| -------------------- | ------------------------------------------- | ------------------------------------------------- |
 | DB_HOST              | The hostname for the database               | localhost                                         |
 | DB_USERNAME          | The username for the database               | username                                          |
 | DB_PASSWORD          | The password for the database               | password                                          |
@@ -54,8 +54,8 @@ As far as best practices, and how to deploy containers, a Google search is your 
 
 ### Caddy
 
-| Environment Variable | Details                                                                     |  Example                      |
-|----------------------|-----------------------------------------------------------------------------|-------------------------------|
+| Environment Variable |                                   Details                                   |            Example            |
+| -------------------- | --------------------------------------------------------------------------- | ----------------------------- |
 | ACME_AGREE           | Agree to ACME TOS                                                           | true                          |
 | URL                  | The URL the app is running on                                               | url.domain.com                |
 | TLS_OPTIONS          | The TLS options for Caddy, off for local development, email for LetsEncrypt | email@domain.com              |
@@ -69,17 +69,22 @@ As far as best practices, and how to deploy containers, a Google search is your 
 
 Note: Client environment variables must be set at build time
 
-| Environment Variable | Details                       | Example |
-|----------------------|-------------------------------|---------|
+| Environment Variable |            Details            | Example |
+| -------------------- | ----------------------------- | ------- |
 | BASE_URL             | The base URL for the frontend | /       |
 
 ### Gitserver
 
-| Environment Variable | Details                                                                |  Example   |
-|----------------------|------------------------------------------------------------------------|------------|
-| REPO_PATH            | The path to keep git repos in                                          | /app/repos |
-| AUTO_CREATE_REPOS    | Whether to create repos if they don't exist                            | true       |
-| PORT                 | The port to listen to git on                                           | 29418      |
+| Environment Variable |                   Details                   |  Example   |
+| -------------------- | ------------------------------------------- | ---------- |
+| REPO_PATH            | The path to keep git repos in               | /app/repos |
+| AUTO_CREATE_REPOS    | Whether to create repos if they don't exist | true       |
+| PORT                 | The port to listen to git on                | 29418      |
+| DB_HOST              | The hostname for the database               | localhost  |
+| DB_USERNAME          | The username for the database               | username   |
+| DB_PASSWORD          | The password for the database               | password   |
+| DB_DATABASE          | The name of the database to use             | data       |
+| DB_DIALECT           | The type of database to use                 | mysql      |
 
 ## Volumes
 
@@ -89,8 +94,8 @@ None
 
 ### Caddy
 
-| Path         | Details                               |
-|--------------|---------------------------------------|
+|     Path     |                Details                |
+| ------------ | ------------------------------------- |
 | /root/.caddy | The persistent SSL certificate volume |
 
 ### Client
@@ -99,8 +104,8 @@ None
 
 ### Gitserver
 
-| Path       | Details                        |
-|------------|--------------------------------|
+|    Path    |            Details             |
+| ---------- | ------------------------------ |
 | /app/repos | The persistent git repo volume |
 
 ## Database
