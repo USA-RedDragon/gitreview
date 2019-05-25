@@ -12,7 +12,7 @@
         <td>{{ props.item.login }}</td>
         <td>
           <v-icon v-if="props.item.admin">check_circle</v-icon>
-          <v-icon v-if="!props.item.admin">error</v-icon>
+          <v-icon v-if="!props.item.admin">cancel</v-icon>
         </td>
       </template>
     </v-data-table>
