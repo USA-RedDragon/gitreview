@@ -21,6 +21,7 @@
   },
   "dependencies": {
     "anymatch": "^3.0.2",
+    "argon2": "^0.23.0",
     "compression": "1.7.4",
     "connect-session-sequelize": "^6.0.0",
     "cookie-parser": "^1.4.4",
