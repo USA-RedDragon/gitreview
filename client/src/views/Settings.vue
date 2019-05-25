@@ -35,39 +35,39 @@
 import axios from "axios";
 
 export default {
-  name: "Settings",
-  data: () => ({
-    valid: true,
-    user: {},
-    password: null,
-    confirmPassword: null,
-    showPassword1: false,
-    showPassword2: false,
-    rules: {
-        required: (v) => (v != null && !!v) || 'Required.',
-        min: (v) => (v != null && v.length >= 20) || 'At least 20 characters',
-    }
-  }),
-  computed: {
-    passwordConfirmationRules() {
-      return () => (this.password === this.confirmPassword) || 'Passwords do not match';
+    name: "Settings",
+    data: () => ({
+        valid: true,
+        user: {},
+        password: null,
+        confirmPassword: null,
+        showPassword1: false,
+        showPassword2: false,
+        rules: {
+            required: (v) => (v != null && !!v) || 'Required.',
+            min: (v) => (v != null && v.length >= 20) || 'At least 20 characters',
+        }
+    }),
+    computed: {
+        passwordConfirmationRules() {
+            return () => (this.password === this.confirmPassword) || 'Passwords do not match';
+        },
     },
-},
-  methods: {
-    submit() {
-      if (this.$refs.form.validate()) {
-        this.user.gitPassword = this.password;
-        axios.put("/api/v1/users/me", this.user);
-      } else {
-        return;
-      }
+    methods: {
+        submit() {
+            if (this.$refs.form.validate()) {
+                this.user.gitPassword = this.password;
+                axios.put("/api/v1/users/me", this.user);
+            } else {
+                return;
+            }
+        }
+    },
+    created() {
+        axios.get("/api/v1/users/me").then(res => {
+            this.user = res.data;
+        });
     }
-  },
-  created() {
-    axios.get("/api/v1/users/me").then(res => {
-      this.user = res.data;
-    });
-  }
 };
 </script>
 

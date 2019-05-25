@@ -23,19 +23,19 @@
 import axios from 'axios';
 
 export default {
-  name: "Users",
-  data: () => ({
-    headers: [
-      { text: "Name", value: "name", sortable: true },
-      { text: "Username", value: "login", sortable: true },
-      { text: "Admin", value: "admin", sortable: true }
-    ],
-    users: []
-  }),
-  created() {
-    axios.get("/api/v1/users").then(res => {
-      this.users = res.data;
-    });
-  }
+    name: "Users",
+    data: () => ({
+        headers: [
+            { text: "Name", value: "name", sortable: true },
+            { text: "Username", value: "login", sortable: true },
+            { text: "Admin", value: "admin", sortable: true }
+        ],
+        users: []
+    }),
+    created() {
+        axios.get("/api/v1/users").then(res => {
+            this.users = res.data;
+        });
+    }
 };
 </script>

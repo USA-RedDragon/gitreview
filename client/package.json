@@ -16,7 +16,7 @@
     "start": "npm run start:dev",
     "start:dev": "vue-cli-service serve",
     "build": "vue-cli-service build",
-    "lint": "eslint src/**/*.js src/**/*.vue",
+    "lint": "eslint --ext .js,.vue src/",
     "lint:fix": "npm run lint -- --fix",
     "test:e2e": "vue-cli-service test:e2e",
     "test:unit": "vue-cli-service test:unit"

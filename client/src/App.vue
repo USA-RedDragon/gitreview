@@ -179,8 +179,8 @@ export default {
         return {
             drawer: false,
             loggedIn: false,
-      // localStorage in Firefox is string-only
-      dark: localStorage.dark === 'true' ? true:false,
+            // localStorage in Firefox is string-only
+            dark: localStorage.dark === 'true' ? true:false,
             user: {},
             notficationCount: 0,
             notfications: [
@@ -205,12 +205,12 @@ export default {
             ]
         };
     },
-  watch: {
-    dark(newValue) {
-      // localStorage in Firefox is string-only
-      localStorage.dark = this.dark ? 'true':'false';
-    }
-  },
+    watch: {
+        dark(_newValue) {
+            // localStorage in Firefox is string-only
+            localStorage.dark = this.dark ? 'true':'false';
+        }
+    },
     created() {
         axios
             .get("/api/v1/users/me")
