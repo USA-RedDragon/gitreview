@@ -47,6 +47,12 @@ module.exports = (app) => {
                 avatarUrl: profile._json.avatar_url,
             },
         }).then(([user, created]) => {
+            if (created && user.id == 1) {
+                // First user, make them an admin
+                return user.update({ admin: true }).then((user) => {
+                    return cb(null, user);
+                });
+            }
             return cb(null, user);
         }).catch((err) => {
             return cb(err, null);
