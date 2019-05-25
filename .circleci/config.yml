@@ -93,8 +93,14 @@ jobs:
           name: Add known_hosts
           command: echo "$SSH_HOSTNAME,$SSH_IP $SSH_SCHEME $SSH_SERVER_KEY" >> ~/.ssh/known_hosts
       - run:
-          name: SSH Test
-          command: ssh $SSH_USERNAME@$SSH_HOSTNAME ls
+          name: Bring docker-compose down
+          command: ssh $SSH_USERNAME@$SSH_HOSTNAME docker-compose -f gitreview/docker-compose.yml down
+      - run:
+          name: Pull Docker images
+          command: ssh $SSH_USERNAME@$SSH_HOSTNAME docker-compose -f gitreview/docker-compose.yml pull
+      - run:
+          name: Bring docker-compose up
+          command: ssh $SSH_USERNAME@$SSH_HOSTNAME docker-compose -f gitreview/docker-compose.yml up
 
 workflows:
   version: 2
