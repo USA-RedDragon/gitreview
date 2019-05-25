@@ -42,6 +42,8 @@ services:
   gitserver:
     image: node:10.15-alpine
     working_dir: /app
+    environment:
+      DB_HOST: "mariadb"
     command: apk add --no-cache git && npm run start
     ports:
       - 29418:29418
