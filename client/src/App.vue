@@ -147,6 +147,12 @@
         </v-list-tile>
         <v-divider/>
         <v-subheader>Settings</v-subheader>
+        <v-list-tile to="/settings">
+          <v-list-tile-action>
+            <v-icon>settings</v-icon>
+          </v-list-tile-action>
+          <v-list-tile-title>Settings</v-list-tile-title>
+        </v-list-tile>
         <v-list-tile>
           <v-list-tile-action>
             <v-icon>invert_colors</v-icon>

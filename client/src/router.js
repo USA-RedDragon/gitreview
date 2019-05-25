@@ -6,6 +6,7 @@ import Abandoned from './views/changes/Abandoned.vue'
 import List from './views/projects/List.vue'
 import Users from './views/people/Users.vue'
 import Groups from './views/people/Groups.vue'
+import Settings from './views/Settings.vue'
 
 Vue.use(Router)
 
@@ -42,6 +43,11 @@ export default new Router({
             path: '/people/groups',
             name: 'Groups',
             component: Groups
+        },
+        {
+            path: '/settings',
+            name: 'Settings',
+            component: Settings
         },
     ]
 })
