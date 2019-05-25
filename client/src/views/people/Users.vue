@@ -20,28 +20,22 @@
 </template>
 
 <script>
+import axios from 'axios';
+
 export default {
-    name: "Users",
-    data: () => ({
-        headers: [
-            { text: "Name", value: "name", sortable: true },
-            { text: "Username", value: "login", sortable: true },
-            { text: "Admin", value: "admin", sortable: true }
-        ],
-        users: [
-            {
-                name: "Jacob McSwain",
-                login: "USA-RedDragon",
-                admin: true,
-                avatarUrl: "https://avatars0.githubusercontent.com/u/13051767?v=4"
-            },
-            {
-                name: "Robert'); DROP TABLE Students; --",
-                login: "LittleBobbyTables",
-                admin: false,
-                avatarUrl: "https://uxfactor.files.wordpress.com/2012/12/stick-figure1.jpg"
-            },
-        ]
-    })
+  name: "Users",
+  data: () => ({
+    headers: [
+      { text: "Name", value: "name", sortable: true },
+      { text: "Username", value: "login", sortable: true },
+      { text: "Admin", value: "admin", sortable: true }
+    ],
+    users: []
+  }),
+  created() {
+    axios.get("/api/v1/users").then(res => {
+      this.users = res.data;
+    });
+  }
 };
 </script>
