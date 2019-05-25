@@ -12,3 +12,12 @@ module.exports.PUTApiUsersMe = (req, res) => {
         res.json({ message: 'User not found' }).status(401);
     });
 };
+
+module.exports.GETApiUsers = (req, res) => {
+    req.db.users.findAll().then((users) => {
+        res.json(users);
+    }).catch((err) => {
+        console.log(err);
+        res.json({ message: 'Query error' }).status(401);
+    });
+};
