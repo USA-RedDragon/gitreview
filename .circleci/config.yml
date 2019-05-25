@@ -100,7 +100,7 @@ jobs:
           command: ssh $SSH_USERNAME@$SSH_HOSTNAME docker-compose -f gitreview/docker-compose.yml pull
       - run:
           name: Bring docker-compose up
-          command: ssh $SSH_USERNAME@$SSH_HOSTNAME docker-compose -f gitreview/docker-compose.yml up
+          command: ssh $SSH_USERNAME@$SSH_HOSTNAME docker-compose -f gitreview/docker-compose.yml up -d
 
 workflows:
   version: 2
