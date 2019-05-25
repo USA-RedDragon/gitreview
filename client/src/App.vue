@@ -2,7 +2,7 @@
   <v-app :dark="dark">
     <v-toolbar>
       <v-toolbar-side-icon @click="drawer = !drawer"/>
-      <v-toolbar-title>Title</v-toolbar-title>
+      <v-toolbar-title>GitReview</v-toolbar-title>
       <v-spacer/>
       <v-text-field
         flat
