@@ -7,6 +7,7 @@ import List from './views/projects/List.vue'
 import Users from './views/people/Users.vue'
 import Groups from './views/people/Groups.vue'
 import Settings from './views/Settings.vue'
+import ChangeDetails from './views/changes/ChangeDetails.vue'
 
 Vue.use(Router)
 
@@ -23,6 +24,11 @@ export default new Router({
             path: '/changes/merged',
             name: 'Merged',
             component: Merged
+        },
+        {
+            path: '/changes/details/:id',
+            name: 'ChangeDetails',
+            component: ChangeDetails
         },
         {
             path: '/changes/abandoned',
