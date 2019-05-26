@@ -3,7 +3,7 @@
     <p class="display-1">Open Commits</p>
     <v-data-table :headers="headers" :items="users" class="elevation-1">
       <template v-slot:items="props">
-        <td>{{ props.item.subject }}</td>
+        <td><router-link :to="'/changes/details/' + props.item.id">{{ props.item.subject }}</router-link></td>
         <td>{{ props.item.status }}</td>
         <td>{{ props.item.owner }}</td>
         <td>{{ props.item.project }}</td>
@@ -39,6 +39,7 @@ export default {
         ],
         users: [
             {
+                id: 1,
                 subject: "Add toggle for face auto unlock (2/2)",
                 status: "",
                 owner: "Dillon Brosche",
@@ -50,6 +51,7 @@ export default {
                 verified: true
             },
             {
+                id: 2,
                 subject: "libcameraservice: force specific cam id for google face unlock",
                 status: "Merge Conflict",
                 owner: "Dillon Brosche",
@@ -61,6 +63,7 @@ export default {
                 verified: ""
             },
             {
+                id: 3,
                 subject: "KeyguardHostView: Auto face unlock v2",
                 status: "",
                 owner: "Dillon Brosche",
