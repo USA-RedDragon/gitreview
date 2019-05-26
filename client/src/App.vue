@@ -71,7 +71,7 @@
     </v-toolbar>
     <v-navigation-drawer v-model="drawer" absolute temporary>
       <v-list>
-        <v-list-tile avatar>
+        <v-list-tile avatar v-if="loggedIn">
           <v-list-tile-avatar>
             <img :src="user.avatarUrl">
           </v-list-tile-avatar>
@@ -80,8 +80,8 @@
             <v-list-tile-title>{{user.name}}</v-list-tile-title>
           </v-list-tile-content>
         </v-list-tile>
-        <v-divider/>
-        <v-list-tile>
+        <v-divider v-if="loggedIn"/>
+        <v-list-tile class="hidden-md-and-up">
           <v-text-field
             flat
             hide-details
