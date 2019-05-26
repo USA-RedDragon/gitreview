@@ -1,0 +1,12 @@
+[submodule "api"]
+	path = api
+	url = git@github.com:USA-RedDragon/GitReview-api.git
+[submodule "caddy"]
+	path = caddy
+	url = git@github.com:USA-RedDragon/GitReview-caddy.git
+[submodule "gitserver"]
+	path = gitserver
+	url = git@github.com:USA-RedDragon/GitReview-gitserver.git
+[submodule "client"]
+	path = client
+	url = git@github.com:USA-RedDragon/GitReview-frontend.git
