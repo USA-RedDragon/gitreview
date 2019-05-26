@@ -1,6 +1,23 @@
 # Git Review
 
-[![CircleCI](https://circleci.com/gh/USA-RedDragon/gitreview.svg?style=svg)](https://circleci.com/gh/USA-RedDragon/gitreview) [![codecov](https://codecov.io/gh/USA-RedDragon/gitreview/branch/master/graph/badge.svg)](https://codecov.io/gh/USA-RedDragon/gitreview)
+## Status
+
+### [API](https://github.com/USA-RedDragon/GitReview-api)
+
+[![CircleCI](https://circleci.com/gh/USA-RedDragon/GitReview-api/tree/master.svg?style=svg)](https://circleci.com/gh/USA-RedDragon/GitReview-api/tree/master) [![codecov](https://codecov.io/gh/USA-RedDragon/GitReview-api/branch/master/graph/badge.svg)](https://codecov.io/gh/USA-RedDragon/GitReview-api) [![API](https://images.microbadger.com/badges/image/jamcswain/gitreview-api.svg)](https://microbadger.com/images/jamcswain/gitreview-api "Get your own image badge on microbadger.com")
+
+### [Caddy](https://github.com/USA-RedDragon/GitReview-caddy)
+
+[![CircleCI](https://circleci.com/gh/USA-RedDragon/GitReview-caddy/tree/master.svg?style=svg)](https://circleci.com/gh/USA-RedDragon/GitReview-caddy/tree/master) [![Caddy](https://images.microbadger.com/badges/image/jamcswain/gitreview-caddy.svg)](https://microbadger.com/images/jamcswain/gitreview-caddy "Get your own image badge on microbadger.com")
+
+### [Frontend](https://github.com/USA-RedDragon/GitReview-frontend)
+
+[![CircleCI](https://circleci.com/gh/USA-RedDragon/GitReview-frontend/tree/master.svg?style=svg)](https://circleci.com/gh/USA-RedDragon/GitReview-frontend/tree/master) [![codecov](https://codecov.io/gh/USA-RedDragon/gitreview-frontend/branch/master/graph/badge.svg)](https://codecov.io/gh/USA-RedDragon/gitreview-frontend) [![Client](https://images.microbadger.com/badges/image/jamcswain/gitreview-client.svg)](https://microbadger.com/images/jamcswain/gitreview-client "Get your own image badge on microbadger.com")
+
+### [GitServer](https://github.com/USA-RedDragon/GitReview-gitserver)
+
+[![CircleCI](https://circleci.com/gh/USA-RedDragon/GitReview-gitserver/tree/master.svg?style=svg)](https://circleci.com/gh/USA-RedDragon/GitReview-gitserver/tree/master) [![codecov](https://codecov.io/gh/USA-RedDragon/gitserver/branch/master/graph/badge.svg)](https://codecov.io/gh/USA-RedDragon/gitserver) [![Gitserver](https://images.microbadger.com/badges/image/jamcswain/gitreview-gitserver.svg)](https://microbadger.com/images/jamcswain/gitreview-gitserver "Get your own image badge on microbadger.com")
+
 
 ## Running Locally
 
@@ -16,23 +33,6 @@ The below documentation will go through the information you need.
 
 As far as best practices, and how to deploy containers, a Google search is your best friend.
 
-## Docker Images
-
-### API
-
-[![API](https://images.microbadger.com/badges/image/jamcswain/gitreview-api.svg)](https://microbadger.com/images/jamcswain/gitreview-api "Get your own image badge on microbadger.com")
-
-### Caddy
-
-[![Caddy](https://images.microbadger.com/badges/image/jamcswain/gitreview-caddy.svg)](https://microbadger.com/images/jamcswain/gitreview-caddy "Get your own image badge on microbadger.com")
-
-### Client
-
-[![Client](https://images.microbadger.com/badges/image/jamcswain/gitreview-client.svg)](https://microbadger.com/images/jamcswain/gitreview-client "Get your own image badge on microbadger.com")
-
-### Gitserver
-
-[![Gitserver](https://images.microbadger.com/badges/image/jamcswain/gitreview-gitserver.svg)](https://microbadger.com/images/jamcswain/gitreview-gitserver "Get your own image badge on microbadger.com")
 
 ## Environment Variables
 
