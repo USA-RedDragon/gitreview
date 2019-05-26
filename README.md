@@ -16,8 +16,7 @@
 
 ### [GitServer](https://github.com/USA-RedDragon/GitReview-gitserver)
 
-[![CircleCI](https://circleci.com/gh/USA-RedDragon/GitReview-gitserver/tree/master.svg?style=svg)](https://circleci.com/gh/USA-RedDragon/GitReview-gitserver/tree/master) [![codecov](https://codecov.io/gh/USA-RedDragon/gitserver/branch/master/graph/badge.svg)](https://codecov.io/gh/USA-RedDragon/gitserver) [![Gitserver](https://images.microbadger.com/badges/image/jamcswain/gitreview-gitserver.svg)](https://microbadger.com/images/jamcswain/gitreview-gitserver "Get your own image badge on microbadger.com")
-
+[![CircleCI](https://circleci.com/gh/USA-RedDragon/GitReview-gitserver/tree/master.svg?style=svg)](https://circleci.com/gh/USA-RedDragon/GitReview-gitserver/tree/master) [![codecov](https://codecov.io/gh/USA-RedDragon/GitReview-gitserver/branch/master/graph/badge.svg)](https://codecov.io/gh/USA-RedDragon/GitReview-gitserver) [![Gitserver](https://images.microbadger.com/badges/image/jamcswain/gitreview-gitserver.svg)](https://microbadger.com/images/jamcswain/gitreview-gitserver "Get your own image badge on microbadger.com")
 
 ## Running Locally
 
