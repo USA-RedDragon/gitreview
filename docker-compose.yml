@@ -29,11 +29,7 @@ services:
     working_dir: /app
     environment:
       DB_HOST: "mariadb"
-      GITHUB_CLIENT_ID: "e784805167d98101e139"
-      GITHUB_CLIENT_SECRET: "9f626c1a443864ccc0f8397a933ca1f7edae870c"
-      HOST: "https://4bddd2f0.ngrok.io"
-      GITHUB_CALLBACK_URL: "https://4bddd2f0.ngrok.io/api/v1/auth/github/callback"
-    command: sh -c "apk add --no-cache python && npm rebuild argon2 && npm run start"
+    command: sh -c "apk add --no-cache python make && npm rebuild argon2 && npm run start"
     ports:
       - 3000:3000
     depends_on:
@@ -46,7 +42,7 @@ services:
     working_dir: /app
     environment:
       DB_HOST: "mariadb"
-    command: sh -c "apk add --no-cache git && npm rebuild argon2 && npm run start"
+    command: sh -c "apk add --no-cache git python && npm rebuild argon2 && npm run start"
     ports:
       - 29418:29418
     depends_on:
